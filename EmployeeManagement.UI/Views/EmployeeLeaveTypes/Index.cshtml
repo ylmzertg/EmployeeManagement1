@@ -25,41 +25,36 @@
             <thead>
                 <tr>
                     <th>Liste İsmi</th>
-                    <th>Oluşturma Tarihi</th>
+                    <th>Oluşturulma Tarihi</th>
                     <th>İşlemler</th>
                 </tr>
-            </thead> 
-
+            </thead>
             <tbody>
-                <tr>
-                    @foreach (var item in Model)
-                    {
-
-                        <td>@item.Name </td>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td> @item.Name</td>
                         <td>@item.DateCreated</td>
                         <td>
                             <div class="hidden-sm hidden-xs btn-group">
-                                <button class="btn btn-xs btn-success">
-                                    <i class="ace-icon fa fa-check bigger-120"></i>
-                                </button>
+                                @*<button class="btn btn-xs btn-info">
+                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                    </button>*@
+                                <a class="btn btn-xs btn-info" asp-controller="EmployeeLeaveTypes" asp-action="Edit" asp-route-id="@item.Id">
 
-                                <button class="btn btn-xs btn-info">
                                     <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                </button>
-
-                                <button class="btn btn-xs btn-danger">
-                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                </button>
-
+                                </a>
+                                <a class="btn btn-xs btn-danger" id="btnRemove" data-id="@item.Id">
+                                    <i class="ace-icon fa fa-trash bigger-120"></i>
+                                </a>
                                 <button class="btn btn-xs btn-warning">
                                     <i class="ace-icon fa fa-flag bigger-120"></i>
                                 </button>
                             </div>
-
-
                         </td>
-                    }
-                </tr>
+
+                    </tr>
+                }
             </tbody>
         </table>
     </div><!-- /.span -->
